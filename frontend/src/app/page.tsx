@@ -1,95 +1,66 @@
-import Image from "next/image";
-import styles from "./page.module.css";
-
+'use client'
+import styles from "@/styles/Index.module.css";
 export default function Home() {
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>src/app/page.tsx</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
+    <>
+      {/* Hero Section */}
+      <section id="home" className={styles.hero}>
+        <div className="hero-text">
+          <h2>Bienvenido a nuestra tienda</h2>
+          <p>Selecciona los productos favoritos para tu mascota</p>
         </div>
-      </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      </section>
+
+      {/* Product Grid */}
+      <section id="products" className={styles.products}>
+        <div className={styles.container}>
+          <h2>Productos destacados</h2>
+          <div className={styles.productGrid}>
+            {/* Product 1 */}
+            <div className={styles.productCard}>
+              <img src="https://placehold.co/600x400/000000/FFFFFF/png" alt="Product 1" />
+              <h3>Producto 1</h3>
+              <p>COP$150000 - USD$36.99</p>
+              <a href="#" className={styles.btn}>Añadir al carrito</a>
+            </div>
+            {/* Product 2 */}
+            <div className={styles.productCard}>
+              <img src="https://placehold.co/600x400/000000/FFFFFF/png" alt="Product 2" />
+              <h3>Producto 2</h3>
+              <p>COP$98000 - USD$23.99</p>
+              <a href="#" className={styles.btn}>Añadir al carrito</a>
+            </div>
+            {/* Product 3 */}
+            <div className={styles.productCard}>
+              <img src="https://placehold.co/600x400/png" alt="Product 3" />
+              <h3>Producto 3</h3>
+              <p>COP$20500 - USD$4.99</p>
+              <a href="#" className={styles.btn}>Añadir al carrito</a>
+            </div>
+            {/* Product 4 */}
+            <div className={styles.productCard}>
+              <img src="https://placehold.co/600x400/FF00FF/FFFFFF/png" alt="Product 4" />
+              <h3>Producto 4</h3>
+              <p>COP$30000 - USD$7.99</p>
+              <a href="#" className={styles.btn}>Añadir al carrito</a>
+            </div>
+            {/* Product 5 */}
+            <div className={styles.productCard}>
+              <img src="https://placehold.co/600x400/FF0000/FFFFFF/png" alt="Product 5" />
+              <h3>Producto 5</h3>
+              <p>COP$98000 - USD$23.99</p>
+              <a href="#" className={styles.btn}>Añadir al carrito</a>
+            </div>
+            {/* Product 6 */}
+            <div className={styles.productCard}>
+              <img src="https://placehold.co/600x400/000000/FFFFFF/png" alt="Product 6" />
+              <h3>Producto 6</h3>
+              <p>COP$60000 - USD$14.99</p>
+              <a href="#" className={styles.btn}>Añadir al carrito</a>
+            </div>
+          </div>
+        </div>
+      </section>
+ </>
   );
 }

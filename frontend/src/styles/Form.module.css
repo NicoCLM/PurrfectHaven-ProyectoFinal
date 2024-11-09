@@ -1,0 +1,82 @@
+/* AuthForm.module.css */
+
+
+/* Contenedor del formulario (centrar formulario) */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Ocupar toda la altura de la pantalla */
+  background-color: #eef2f7; /* Puedes ajustar el color de fondo si lo deseas */
+}
+
+/* Formulario principal */
+.form {
+ background-color: #f5f5f5;
+ padding: 40px;
+ border-radius: 10px;
+ box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+ width: 400px;
+ max-width: 100%;
+}
+
+/* Contenedores de los inputs */
+.form div {
+  margin-bottom: 15px;
+}
+
+/* Etiquetas de los inputs */
+.labels {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 5px;
+  display: block;
+}
+
+/* Inputs */
+.inpt {
+  width: 100%;
+  padding: 12px 15px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  color: #333;
+  background-color: #f9f9f9;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease;
+}
+
+/* Estilo cuando se hace focus en el input */
+.inpt:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+/* Botón */
+.btn {
+  margin-top: 2px;  
+  width: 100%;
+  padding: 12px;
+  background-color: #007bff;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Estilo del botón al pasar el ratón */
+.btn:hover {
+  background-color: #10006b;
+  color: white;
+  border: 2px solid white;
+}
+
+/* Mensajes de error */
+.errorMsg {
+  color: red;
+}
+
