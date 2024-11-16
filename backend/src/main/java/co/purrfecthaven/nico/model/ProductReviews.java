@@ -1,9 +1,9 @@
-package co.purrfecthaven.nico.dto;
+package co.purrfecthaven.nico.model;
 import java.util.Date;
 /**
- * ProductoReviewsDTO
+ * ProductoReviews
  */
-public class ProductoReviewsDTO {
+public class ProductReviews {
 
     private int reviewId;
     private int userId;

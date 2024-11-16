@@ -3,9 +3,10 @@ package co.purrfecthaven.nico.model;
 /**
  * UserRoles
  */
-modellic class UserRoles {
+public class UserRoles {
 
     private int userRoleId;
     private int userId;
     private int roleId;
 }
+
