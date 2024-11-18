@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, FormEvent } from 'react';
-mport { validatePasswordMatch } from '@/utils/validators';
+import { validatePasswordMatch } from '@/utils/validators';
 import styles from '@/styles/Form.module.css';
 
 interface AuthFormProps {
@@ -78,9 +78,7 @@ const AuthForm: React.FC<AuthFormProps> = ({ isRegister }) => {
                         {isRegister ? 'Registrarse' : 'Iniciar sesión'}
                     </button>
                 </form>
-                <button className={styles.btn}>
-                    <a href="/">Volver</a>
-                </button>
+                <a className={styles.btn} href="/">Volver</a>
             </div>
         </div>
     );

@@ -1,5 +1,6 @@
 package co.purrfecthaven.nico.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -34,6 +35,10 @@ public class User {
 
     private String address;
     private String phone;
+    
+    @NotNull
+    @Column(columnDefinition = "TINYINT(1) DEFAULT 0")
+    private boolean isDeleted;
     
 
     //Getters & Setters
@@ -92,5 +97,13 @@ public class User {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public boolean getIsDeleted() {
+        return this.isDeleted;
+    }
+
+    public void setIsDeleted(boolean isDeleted) {
+        this.isDeleted = isDeleted;
     }
 }
