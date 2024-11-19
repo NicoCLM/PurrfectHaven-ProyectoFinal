@@ -1,5 +1,7 @@
 package co.purrfecthaven.nico.model;
 
+import java.time.LocalDateTime;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -39,9 +41,21 @@ public class User {
     @NotNull
     @Column(columnDefinition = "TINYINT(1) DEFAULT 0")
     private boolean isDeleted;
+
+    
+    private LocalDateTime deletedAt;
     
 
     //Getters & Setters
+    
+    
+    public LocalDateTime getDeletedAt() {
+        return this.deletedAt;
+    }
+
+    public void setDeletedAt(LocalDateTime deletedAt) {
+        this.deletedAt = deletedAt;
+    }
 
     public int getUserId() {
         return this.userId;

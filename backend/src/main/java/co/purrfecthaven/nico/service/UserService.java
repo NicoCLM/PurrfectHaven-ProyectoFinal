@@ -1,5 +1,6 @@
 package co.purrfecthaven.nico.service;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,7 +42,11 @@ public class UserService {
     public User deleteUserById(User request, Integer id){
         User user = userRp.findById(id).get();
 
-        user.setIsDeleted(request.getIsDeleted());
+        user.setIsDeleted(true);
+
+        if(request.getIsDeleted()){
+            user.setDeletedAt(LocalDateTime.now());
+        }
 
         userRp.save(user);
         return user;

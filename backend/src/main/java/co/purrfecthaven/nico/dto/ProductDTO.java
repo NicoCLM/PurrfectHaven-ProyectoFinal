@@ -13,10 +13,28 @@ public class ProductDTO {
     private int stock;
     private String imageUrl;
     private int categoryId;
+    private boolean isDeleted;
     private LocalDateTime dateCreated;
+    private LocalDateTime deletedAt;
+
 
     //Getters & Setters
-    
+    public boolean getIsDeleted() {
+        return this.isDeleted;
+    }
+
+    public void setIsDeleted(boolean isDeleted) {
+        this.isDeleted = isDeleted;
+    }
+
+    public LocalDateTime getDeletedAt() {
+        return this.deletedAt;
+    }
+
+    public void setDeletedAt(LocalDateTime deletedAt) {
+        this.deletedAt = deletedAt;
+    }
+
     public int getProductId() {
         return this.productId;
     }
