@@ -1,5 +1,6 @@
 package co.purrfecthaven.nico.model;
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 import jakarta.persistence.Entity;
@@ -37,7 +38,18 @@ public class OrderDetails {
     @NotNull
     private BigDecimal price;
 
+    @NotNull
+    private LocalDateTime createdAt;
+
     //Getters & Setters
+    
+    public LocalDateTime getCreatedAt() {
+        return this.createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
 
     public int getOrderDetailsId() {
         return this.orderDetailsId;

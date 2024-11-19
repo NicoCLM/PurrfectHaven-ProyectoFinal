@@ -39,8 +39,21 @@ public class UserRoles {
 
     
     private LocalDateTime deletedAt;
+
+    @NotNull
+    private LocalDateTime createdAt;
+
     //Getters & Setters
     
+    public LocalDateTime getCreatedAt() {
+        return this.createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+
     public boolean getIsDeleted() {
         return this.isDeleted;
     }

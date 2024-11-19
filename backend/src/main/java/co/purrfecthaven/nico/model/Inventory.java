@@ -37,10 +37,21 @@ public class Inventory {
     @NotNull
     @Column(columnDefinition = "TINYINT(1) DEFAULT 0")
     private boolean isDeleted;
-   
+
     private LocalDateTime deletedAt;
+    
+    @NotNull
+    private LocalDateTime createdAt;
 
     //Getters & Setters
+    
+    public LocalDateTime getCreatedAt() {
+        return this.createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
     
 
     public LocalDateTime getDeletedAt() {

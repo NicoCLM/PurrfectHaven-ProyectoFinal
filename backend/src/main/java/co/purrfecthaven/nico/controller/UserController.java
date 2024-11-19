@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import co.purrfecthaven.nico.service.UserService;
+import co.purrfecthaven.nico.dto.UserDTO;
 import co.purrfecthaven.nico.exception.UserNotFoundException;
 import co.purrfecthaven.nico.model.User;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -40,13 +41,13 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<User> saveUser(@RequestBody User user){
-        User createdUser = this.userService.createUser(user);
+    public ResponseEntity<User> saveUser(@RequestBody UserDTO userDTO){
+        User createdUser = this.userService.createUser(userDTO);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdUser);
     }
 
     @PutMapping("/update/{id}")
-    public ResponseEntity<?> updateUserById(@RequestBody User request, @PathVariable("id") Integer id){
+    public ResponseEntity<?> updateUserById(@RequestBody UserDTO request, @PathVariable("id") Integer id){
         try {
              User updatedUser = this.userService.updateUserById(request, id);
              return ResponseEntity.ok(updatedUser);
@@ -59,9 +60,9 @@ public class UserController {
     }
 
     @PutMapping("/delete/{id}")
-    public ResponseEntity<?> deleteUserById(@RequestBody User request, @PathVariable("id") Integer id){
+    public ResponseEntity<?> deleteUserById(@PathVariable("id") Integer id){
         try {
-            User deletedUser = this.userService.deleteUserById(request, id);
+            User deletedUser = this.userService.deleteUserById(id);
             return ResponseEntity.ok(deletedUser);
         } catch (UserNotFoundException e) {
             return ResponseEntity.noContent().build();

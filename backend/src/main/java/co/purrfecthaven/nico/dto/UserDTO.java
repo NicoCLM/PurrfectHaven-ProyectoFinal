@@ -13,26 +13,8 @@ public class UserDTO {
     private String hashedPassword;
     private String address;
     private String phone;
-    private boolean isDeleted;
-    private LocalDateTime deletedAt;    
     //Getters & Setters
     
-    public LocalDateTime getDeletedAt() {
-        return this.deletedAt;
-    }
-
-    public void setDeletedAt(LocalDateTime deletedAt) {
-        this.deletedAt = deletedAt;
-    }
-
-    public boolean getIsDeleted() {
-        return this.isDeleted;
-    }
-
-    public void setIsDeleted(boolean isDeleted) {
-        this.isDeleted = isDeleted;
-    }
-
     public int getUserId() {
         return this.userId;
     }

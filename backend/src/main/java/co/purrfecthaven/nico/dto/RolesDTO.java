@@ -10,11 +10,7 @@ public class RolesDTO {
     private int roleId;
     private String roleName;
     private String description;
-
-    private boolean isDeleted;
-
     private LocalDateTime deletedAt;
-
     private LocalDateTime createdAt;
 
     //Getters & Setters
@@ -25,14 +21,6 @@ public class RolesDTO {
 
     public void setCreatedAt(LocalDateTime createdAt){
         this.createdAt = createdAt;
-    }
-
-    public boolean getIsDeleted() {
-        return this.isDeleted;
-    }
-
-    public void setIsDeleted(boolean isDeleted) {
-        this.isDeleted = isDeleted;
     }
 
     public LocalDateTime getDeletedAt() {

@@ -1,6 +1,7 @@
 package co.purrfecthaven.nico.model;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -42,8 +43,19 @@ public class ShippingDetails {
 
     @NotNull
     private String status;
+    
+    @NotNull
+    private LocalDateTime createdAt;
 
     //Getters & Setters
+    
+    public LocalDateTime getCreatedAt() {
+        return this.createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
 
     public int getShippingId() {
         return this.shippingId;

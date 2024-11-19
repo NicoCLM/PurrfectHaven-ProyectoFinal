@@ -4,8 +4,11 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import co.purrfecthaven.nico.dto.UserDTO;
 import co.purrfecthaven.nico.model.User;
 import co.purrfecthaven.nico.repository.UserRepository;
 
@@ -22,31 +25,43 @@ public class UserService {
         return (ArrayList<User>) userRp.findAll();
     }
 
-    public User createUser(User user){
-        return userRp.save(user);
+    public User createUser(UserDTO userDTO){
+        User user = new User();
+        PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        String hashedPassword = passwordEncoder.encode(userDTO.getHashedPassword());
+        user.setUsername(userDTO.getUsername());
+        user.setName(userDTO.getName());
+        user.setEmail(userDTO.getEmail());
+        user.setHashedPassword(hashedPassword);
+
+        userRp.save(user);
+        return user;
+        
     }
 
-    public User updateUserById(User request, Integer id){
+    public User updateUserById(UserDTO request, Integer id){
         User user = userRp.findById(id).get();
         
         user.setUsername(request.getUsername());
         user.setPhone(request.getPhone());
         user.setAddress(request.getAddress());
-        user.setHashedPassword(request.getHashedPassword());
 
+        if(request.getHashedPassword()!= null && !request.getHashedPassword().isEmpty()){
+             PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+             String hashedPassword = passwordEncoder.encode(request.getHashedPassword());
+             user.setHashedPassword(hashedPassword);
+
+        }
 
         userRp.save(user);
         return user;
     }
 
-    public User deleteUserById(User request, Integer id){
+    public User deleteUserById(Integer id){
         User user = userRp.findById(id).get();
 
         user.setIsDeleted(true);
-
-        if(request.getIsDeleted()){
-            user.setDeletedAt(LocalDateTime.now());
-        }
+        user.setDeletedAt(LocalDateTime.now());
 
         userRp.save(user);
         return user;

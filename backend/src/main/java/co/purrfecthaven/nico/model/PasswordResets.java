@@ -32,10 +32,21 @@ public class PasswordResets {
     @NotNull
     private LocalDateTime tokenExpiry;
 
-    @NotNull
     private LocalDateTime resetDate;
     
+    @NotNull
+    private LocalDateTime createdAt;
+
     //Getters & Setters
+    
+    public LocalDateTime getCreatedAt() {
+        return this.createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
     public int getResetId() {
         return resetId;
     }

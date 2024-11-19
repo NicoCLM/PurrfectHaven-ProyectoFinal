@@ -9,7 +9,6 @@ public class PaymentsDTO {
     private int orderId;
     private BigDecimal amount;
     private int paymentMethod;
-    private Timestamp paymentDate;
 
     //Getters & Setters
     
@@ -45,12 +44,5 @@ public class PaymentsDTO {
         this.paymentMethod = paymentMethod;
     }
 
-    public Timestamp getPaymentDate() {
-        return this.paymentDate;
-    }
-
-    public void setPaymentDate(Timestamp paymentDate) {
-        this.paymentDate = paymentDate;
-    }
 
 }

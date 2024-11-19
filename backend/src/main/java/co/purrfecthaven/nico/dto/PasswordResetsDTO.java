@@ -8,8 +8,6 @@ public class PasswordResetsDTO {
     private int resetId;
     private int userId;
     private String resetToken;
-    private LocalDateTime tokenExpiry;
-    private LocalDateTime resetDate;
 
     //Getters & Setters
     
@@ -37,19 +35,4 @@ public class PasswordResetsDTO {
         this.resetToken = resetToken;
     }
 
-    public LocalDateTime getTokenExpiry() {
-        return this.tokenExpiry;
-    }
-
-    public void setgetTokenExpiry(LocalDateTime tokenExpiry) {
-        this.tokenExpiry = tokenExpiry;
-    }
-
-    public LocalDateTime getResetDate() {
-        return this.resetDate;
-    }
-
-    public void setResetDate(LocalDateTime resetDate) {
-        this.resetDate = resetDate;
-    }
 }

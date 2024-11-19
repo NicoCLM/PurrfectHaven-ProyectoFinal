@@ -10,25 +10,8 @@ public class UserRolesDTO {
     private int userRoleId;
     private int userId;
     private int roleId;
-    private boolean isDeleted;
-    private LocalDateTime deletedAt;
     //Getters & Setters
     
-    public boolean getIsDeleted() {
-        return this.isDeleted;
-    }
-
-    public void setIsDeleted(boolean isDeleted) {
-        this.isDeleted = isDeleted;
-    }
-
-    public LocalDateTime getDeletedAt() {
-        return this.deletedAt;
-    }
-
-    public void setDeletedAt(LocalDateTime deletedAt) {
-        this.deletedAt = deletedAt;
-    }
 
     public int getUserRoleId() {
         return this.userRoleId;

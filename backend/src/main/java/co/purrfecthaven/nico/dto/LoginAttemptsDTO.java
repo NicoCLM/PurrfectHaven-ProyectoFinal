@@ -7,11 +7,10 @@ public class LoginAttemptsDTO {
     
     private int attemptId;
     private int userId;
-    private LocalDateTime attemptDate;
-    private boolean successful;
+
 
     //Getters & Setters
-    
+
     public int getAttemptId() {
         return this.attemptId;
     }

@@ -31,8 +31,19 @@ public class LoginAttempts {
 
     @NotNull
     private boolean successful;
+    
+    @NotNull
+    private LocalDateTime createdAt;
 
     //Getters & Setters
+    
+    public LocalDateTime getCreatedAt() {
+        return this.createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
     
     public int getAttemptId() {
         return this.attemptId;

@@ -39,7 +39,18 @@ public class ShoppingCart {
     @NotNull
     private String status;
 
+    @NotNull
+    private LocalDateTime createdAt;
+
     //Getters & Setters
+    
+    public LocalDateTime getCreatedAt() {
+        return this.createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
 
     public int getCartId() {
         return this.cartId;

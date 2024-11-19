@@ -34,6 +34,7 @@ public class Roles {
 
     private LocalDateTime deletedAt;
 
+    @NotNull
     private LocalDateTime createdAt;
 
     //Getters & Setters

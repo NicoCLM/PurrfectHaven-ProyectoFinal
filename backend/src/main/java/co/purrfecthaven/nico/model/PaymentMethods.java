@@ -1,5 +1,7 @@
 package co.purrfecthaven.nico.model;
 
+import java.time.LocalDateTime;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -23,8 +25,19 @@ public class PaymentMethods {
     @NotNull
     private String methodName;
 
+    @NotNull
+    private LocalDateTime createdAt;
 
     //Getters & Setters
+    
+    public LocalDateTime getCreatedAt() {
+        return this.createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
     public int getMethodId() {
         return this.methodId;
     }
