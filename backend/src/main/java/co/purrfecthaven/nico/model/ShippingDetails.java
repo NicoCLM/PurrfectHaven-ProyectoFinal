@@ -1,6 +1,5 @@
 package co.purrfecthaven.nico.model;
 import java.math.BigDecimal;
-import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
 import jakarta.persistence.Entity;
@@ -36,10 +35,10 @@ public class ShippingDetails {
     private String shippingAddress;
 
     @NotNull
-    private Timestamp shippingDate;
+    private LocalDateTime shippingDate;
 
     @NotNull
-    private Timestamp deliveryDate;
+    private LocalDateTime deliveryDate;
 
     @NotNull
     private String status;
@@ -85,19 +84,19 @@ public class ShippingDetails {
         this.shippingAddress = shippingAddress;
     }
 
-    public Timestamp getShippingdate() {
+    public LocalDateTime getShippingdate() {
         return this.shippingDate;
     }
 
-    public void setShippingdate(Timestamp shippingDate) {
+    public void setShippingdate(LocalDateTime shippingDate) {
         this.shippingDate = shippingDate;
     }
 
-    public Timestamp getDeliveryDate() {
+    public LocalDateTime getDeliveryDate() {
         return this.deliveryDate;
     }
 
-    public void setDeliveryDate(Timestamp deliveryDate) {
+    public void setDeliveryDate(LocalDateTime deliveryDate) {
         this.deliveryDate = deliveryDate;
     }
 

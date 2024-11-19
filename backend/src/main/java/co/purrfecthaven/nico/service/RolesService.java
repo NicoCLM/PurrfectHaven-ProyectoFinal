@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import co.purrfecthaven.nico.dto.RolesDTO;
 import co.purrfecthaven.nico.model.Roles;
 import co.purrfecthaven.nico.repository.RolesRepository;
 
@@ -23,13 +24,21 @@ public class RolesService {
         return (ArrayList<Roles>)rolesRp.findAll();
     }
 
-    public Roles createRoles(Roles roles){
-        return rolesRp.save(roles);
+    public Roles createRoles(RolesDTO rolesDTO){
+        Roles roles = new Roles();
+        
+        roles.setCreatedAt(LocalDateTime.now());
+        roles.setRoleName(rolesDTO.getRoleName());
+        roles.setDescription(rolesDTO.getDescription());
+        
+        rolesRp.save(roles);
+        return roles;
+
     }
 
 
 
-    public Roles deleteRolesById(Roles request, Integer id){
+    public Roles deleteRolesById(Integer id){
         Roles roles = rolesRp.findById(id).get();
 
         roles.setIsDeleted(true);

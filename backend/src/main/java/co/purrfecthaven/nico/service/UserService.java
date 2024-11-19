@@ -33,7 +33,7 @@ public class UserService {
         user.setName(userDTO.getName());
         user.setEmail(userDTO.getEmail());
         user.setHashedPassword(hashedPassword);
-
+        user.setCreatedAt(LocalDateTime.now());
         userRp.save(user);
         return user;
         
