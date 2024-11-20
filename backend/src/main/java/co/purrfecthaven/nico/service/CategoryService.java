@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import co.purrfecthaven.nico.dto.CategoryDTO;
 import co.purrfecthaven.nico.model.Category;
 import co.purrfecthaven.nico.repository.CategoryRepository;
 
@@ -23,11 +24,18 @@ public class CategoryService {
         return (ArrayList<Category>) categoryRp.findAll();
     }
 
-    public Category createCategory (Category category){
-        return categoryRp.save(category);
+    public Category createCategory (CategoryDTO categoryDTO){
+        Category category = new Category();
+        
+        category.setCreatedAt(LocalDateTime.now());
+        category.setName(categoryDTO.getName());
+        category.setDescription(categoryDTO.getDescription());
+        
+        categoryRp.save(category);
+        return category;
     }
 
-    public Category updateCategory (Category request, Integer id){
+    public Category updateCategory (CategoryDTO request, Integer id){
         Category category = categoryRp.findById(id).get();
 
         category.setName(request.getName());
@@ -38,7 +46,7 @@ public class CategoryService {
     }
 
 
-    public Category deleteCategoryById(Category request, Integer id){
+    public Category deleteCategoryById(Integer id){
         Category category = categoryRp.findById(id).get();
 
         category.setIsDeleted(true);

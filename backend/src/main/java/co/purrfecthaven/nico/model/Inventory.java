@@ -78,7 +78,7 @@ public class Inventory {
         return this.product;
     }
 
-    public void setProductId(Product product) {
+    public void setProduct(Product product) {
         this.product = product; 
     }
 

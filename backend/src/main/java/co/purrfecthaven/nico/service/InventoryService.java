@@ -3,11 +3,14 @@ package co.purrfecthaven.nico.service;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import co.purrfecthaven.nico.model.Inventory;
+import co.purrfecthaven.nico.model.Product;
 import co.purrfecthaven.nico.repository.InventoryRepository;
-
+import co.purrfecthaven.nico.repository.ProductRepository;
+import co.purrfecthaven.nico.dto.InventoryDTO;
 /**
  * InventoryService
  */
@@ -15,33 +18,44 @@ import co.purrfecthaven.nico.repository.InventoryRepository;
 @Service
 public class InventoryService {
     
+    @Autowired
     private InventoryRepository inventoryRp;
+
+    @Autowired
+    private ProductRepository productRp;
 
     public ArrayList<Inventory> getInventory(){
         return (ArrayList<Inventory>) inventoryRp.findAll();
     }
 
-    public Inventory createInventory(Inventory inventory){
-        return inventoryRp.save(inventory);
-    }
+    public Inventory createInventory(InventoryDTO inventoryDTO){
+        Inventory inventory = new Inventory();
+        Product product = productRp.findById(inventoryDTO.getProductId()).orElseThrow(() -> new IllegalArgumentException("Producto no encontrado" + inventoryDTO.getProductId()));
 
-    public Inventory updateInventoryById(Inventory request, Integer id){
-        Inventory inventory = inventoryRp.findById(id).get();
-        
+        inventory.setProduct(product);
+        inventory.setCreatedAt(LocalDateTime.now());
         inventory.setLastUpdated(LocalDateTime.now());
 
         inventoryRp.save(inventory);
         return inventory;
     }
 
-    public Inventory deleteInventoryById(Inventory request, Integer id){
+    public Inventory updateInventoryById(InventoryDTO request, Integer id){
+        Inventory inventory = inventoryRp.findById(id).get();
+        Product product = productRp.findById(request.getProductId()).orElseThrow(() -> new IllegalArgumentException("Producto no encontrado " + request.getProductId()));
+        
+        inventory.setProduct(product);
+        inventory.setLastUpdated(LocalDateTime.now());
+
+        inventoryRp.save(inventory);
+        return inventory;
+    }
+
+    public Inventory deleteInventoryById(Integer id){
         Inventory inventory = inventoryRp.findById(id).get();
 
         inventory.setIsDeleted(true);
-
-        if(request.getIsDeleted()){
-            inventory.setDeletedAt(LocalDateTime.now());
-        }
+        inventory.setDeletedAt(LocalDateTime.now());
 
         inventoryRp.save(inventory);
         return inventory;

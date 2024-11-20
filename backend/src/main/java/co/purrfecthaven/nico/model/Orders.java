@@ -91,7 +91,7 @@ public class Orders {
         return orderDate ;
     }
 
-    public void setOrderLocalDateTime (LocalDateTime orderDate) {
+    public void setOrderDate (LocalDateTime orderDate) {
         this.orderDate  = orderDate;
     }
 }

@@ -61,7 +61,7 @@ public class LoginAttempts {
         return this.attemptDate;
     }
 
-    public void setAttemptLocalDateTime(LocalDateTime attemptDate) {
+    public void setAttemptDate(LocalDateTime attemptDate) {
         this.attemptDate = attemptDate;
     }
 

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import co.purrfecthaven.nico.service.UserService;
+import jakarta.validation.Valid;
 import co.purrfecthaven.nico.dto.UserDTO;
 import co.purrfecthaven.nico.exception.UserNotFoundException;
 import co.purrfecthaven.nico.model.User;
@@ -40,10 +41,26 @@ public class UserController {
         return ResponseEntity.ok(getUsers);
     }
 
-    @PostMapping
-    public ResponseEntity<User> saveUser(@RequestBody UserDTO userDTO){
-        User createdUser = this.userService.createUser(userDTO);
-        return ResponseEntity.status(HttpStatus.CREATED).body(createdUser);
+    @PostMapping("/register")
+    public ResponseEntity<?> saveUser(@RequestBody UserDTO userDTO){
+        try {
+           User createdUser = this.userService.createUser(userDTO); 
+           return ResponseEntity.status(HttpStatus.CREATED).body(createdUser);
+        } catch (Exception e) {
+           return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Acceso no autorizado");
+        }
+
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<?> login(@RequestBody UserDTO userDTO) {
+        boolean isAuthenticated = userService.authenticate(userDTO.getUserId(), userDTO.getHashedPassword());
+
+        if (isAuthenticated) {
+            return ResponseEntity.status(HttpStatus.OK).body("Login exitoso");
+        } else {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Credenciales incorrectas");
+        }
     }
 
     @PutMapping("/update/{id}")

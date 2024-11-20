@@ -1,6 +1,5 @@
 package co.purrfecthaven.nico.model;
 import java.math.BigDecimal;
-import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
 import jakarta.persistence.Entity;
@@ -30,17 +29,27 @@ public class Payments {
     @NotNull
     private BigDecimal amount;
 
-    @NotNull
-    private int paymentMethod;
+    @ManyToOne
+    @JoinColumn(name = "method_id", nullable = false)
+    private PaymentMethods paymentMethods;
+    
 
     @NotNull
-    private Timestamp paymentDate;
+    private LocalDateTime paymentDate;
     
     @NotNull   
     private LocalDateTime createdAt;
 
     //Getters & Setters
     
+    public PaymentMethods getPaymentMethods() {
+        return this.paymentMethods;
+    }
+
+    public void setPaymentMethods(PaymentMethods paymentMethods) {
+        this.paymentMethods = paymentMethods;
+    }
+
     public LocalDateTime getCreatedAt() {
         return this.createdAt;
     }
@@ -74,19 +83,11 @@ public class Payments {
         this.amount = amount;
     }
 
-    public int getPaymentMethod() {
-        return this.paymentMethod;
-    }
-
-    public void setPaymentMethod(int paymentMethod) {
-        this.paymentMethod = paymentMethod;
-    }
-
-    public Timestamp getPaymentDate() {
+    public LocalDateTime getPaymentDate() {
         return this.paymentDate;
     }
 
-    public void setPaymentDate(Timestamp paymentDate) {
+    public void setPaymentDate(LocalDateTime paymentDate) {
         this.paymentDate = paymentDate;
     }
 }

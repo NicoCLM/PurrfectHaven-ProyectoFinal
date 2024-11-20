@@ -1,6 +1,5 @@
 package co.purrfecthaven.nico.dto;
 import java.math.BigDecimal;
-import java.sql.Timestamp;
 /**
  * PaymentsDTO
  */
