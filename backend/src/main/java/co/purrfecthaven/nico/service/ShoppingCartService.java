@@ -1,6 +1,7 @@
 package co.purrfecthaven.nico.service;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +30,11 @@ public class ShoppingCartService {
 
     @Autowired
     private UserRepository userRp;
+
+    public ArrayList<ShoppingCart> getAll(){
+        return (ArrayList<ShoppingCart>) shoppingCartRp.findAll();
+    }    
+
 
     public Optional<ShoppingCart> getShoppingCartById(Integer id) {
         return shoppingCartRp.findById(id);

@@ -38,7 +38,7 @@ public class PaymentsService {
         payments.setCreatedAt(LocalDateTime.now());
         payments.setOrders(orders);
         payments.setPaymentDate(LocalDateTime.now());
-        payments.setPaymentMethods(paymentsDTO.getPaymentMethod());
+        payments.setPaymentMethods(paymentsDTO.getPaymentMethods());
 
         paymentsRp.save(payments);
         return payments;

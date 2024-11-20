@@ -7,7 +7,7 @@ public class PaymentsDTO {
     private int paymentId;
     private int orderId;
     private BigDecimal amount;
-    private String paymentMethod;
+    private String paymentMethods;
 
     //Getters & Setters
     
@@ -35,12 +35,12 @@ public class PaymentsDTO {
         this.amount = amount;
     }
 
-    public String getPaymentMethod() {
-        return this.paymentMethod;
+    public String getPaymentMethods() {
+        return this.paymentMethods;
     }
 
-    public void setPaymentMethod(String paymentMethod) {
-        this.paymentMethod = paymentMethod;
+    public void setPaymentMethods(String paymentMethods) {
+        this.paymentMethods = paymentMethods;
     }
 
 

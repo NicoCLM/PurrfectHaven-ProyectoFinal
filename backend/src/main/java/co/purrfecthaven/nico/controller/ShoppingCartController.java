@@ -1,5 +1,6 @@
 package co.purrfecthaven.nico.controller;
 
+import java.util.ArrayList;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import co.purrfecthaven.nico.dto.ShoppingCartDTO;
 import co.purrfecthaven.nico.model.ShoppingCart;
@@ -19,6 +22,8 @@ import co.purrfecthaven.nico.service.ShoppingCartService;
 /**
  * ShoppingCartController
  */
+@RestController
+@RequestMapping("/shoppingCart")
 public class ShoppingCartController {
 
     @Autowired
@@ -26,6 +31,15 @@ public class ShoppingCartController {
 
     public ShoppingCartController(ShoppingCartService shoppingCartService){
         this.shoppingCartService = shoppingCartService;
+    }
+    @GetMapping
+    public ResponseEntity<ArrayList<ShoppingCart>> listCategory() {
+        try {
+            ArrayList<ShoppingCart> getCategory = this.shoppingCartService.getAll();
+            return ResponseEntity.ok(getCategory);
+        } catch (Exception e) {
+            return ResponseEntity.status(500).body(null);
+        }
     }
 
     @GetMapping("/{id}")
