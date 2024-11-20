@@ -54,7 +54,7 @@ public class UserController {
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody UserDTO userDTO) {
-        boolean isAuthenticated = userService.authenticate(userDTO.getUserId(), userDTO.getHashedPassword());
+        boolean isAuthenticated = this.userService.authenticate(userDTO.getUsername(), userDTO.getHashedPassword());
 
         if (isAuthenticated) {
             return ResponseEntity.status(HttpStatus.OK).body("Login exitoso");

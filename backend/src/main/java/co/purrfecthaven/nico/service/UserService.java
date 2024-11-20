@@ -97,22 +97,22 @@ public class UserService {
         return user;
     }
 
-    public boolean authenticate(Integer id, String rawPassword) {
-        System.out.println("Authenticating user with ID: " + id);
-        User user = userRp.findById(id).orElse(null);
-
+    public boolean authenticate(String username, String rawPassword) {
+        User user = userRp.findByUsername(username).orElse(null);
+        logger.info("User to auth: ",username);
         if (user == null) {
-            System.err.println("User not found with ID: " + id);
+            logger.error("User not found", username);
             return false; 
         }
-
         boolean matches = rawPassword.equals(user.getHashedPassword());
         if (matches) {
-            System.out.println("Authentication successful for user ID: " + id);
+            logger.info("Authentication successful", username);
         } else {
-            System.err.println("Authentication failed for user ID: " + id);
+            logger.error("Authentication failed", username);
         }
         return matches;
     }
+
 }
+
 
