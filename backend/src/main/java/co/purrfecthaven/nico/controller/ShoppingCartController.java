@@ -23,7 +23,7 @@ import co.purrfecthaven.nico.service.ShoppingCartService;
  * ShoppingCartController
  */
 @RestController
-@RequestMapping("/shoppingCart")
+@RequestMapping("/api/shoppingCart")
 public class ShoppingCartController {
 
     @Autowired

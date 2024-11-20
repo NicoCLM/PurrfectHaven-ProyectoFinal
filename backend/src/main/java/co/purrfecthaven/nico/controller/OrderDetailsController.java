@@ -22,7 +22,7 @@ import co.purrfecthaven.nico.service.OrderDetailsService;
  * OrderDetailsController
  */
 @RestController
-@RequestMapping("/orderDetails")
+@RequestMapping("/api/orderDetails")
 public class OrderDetailsController {
 
    @Autowired

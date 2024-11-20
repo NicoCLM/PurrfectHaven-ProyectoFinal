@@ -19,7 +19,7 @@ import co.purrfecthaven.nico.service.PaymentsService;
  * PaymentsController
  */
 @RestController
-@RequestMapping("/payments")
+@RequestMapping("/api/payments")
 public class PaymentsController {
 
     @Autowired

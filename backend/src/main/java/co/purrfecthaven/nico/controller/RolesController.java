@@ -23,7 +23,7 @@ import co.purrfecthaven.nico.service.RolesService;
  */
 
 @RestController
-@RequestMapping("/roles")
+@RequestMapping("/api/roles")
 public class RolesController {
 
     @Autowired

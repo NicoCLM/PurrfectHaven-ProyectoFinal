@@ -22,7 +22,7 @@ import co.purrfecthaven.nico.service.ProductService;
  * ProductController
  */
 @RestController
-@RequestMapping("/product")
+@RequestMapping("/api/product")
 public class ProductController {
     
     @Autowired
