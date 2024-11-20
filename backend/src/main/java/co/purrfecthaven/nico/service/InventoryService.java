@@ -33,6 +33,7 @@ public class InventoryService {
         Product product = productRp.findById(inventoryDTO.getProductId()).orElseThrow(() -> new IllegalArgumentException("Producto no encontrado" + inventoryDTO.getProductId()));
 
         inventory.setProduct(product);
+        inventory.setStockLevel(inventoryDTO.getStockLevel());
         inventory.setCreatedAt(LocalDateTime.now());
         inventory.setLastUpdated(LocalDateTime.now());
 

@@ -45,6 +45,14 @@ public class Inventory {
 
     //Getters & Setters
     
+    public int getStockLevel() {
+        return this.stockLevel;
+    }
+
+    public void setStockLevel(int stockLevel) {
+        this.stockLevel = stockLevel;
+    }
+    
     public LocalDateTime getCreatedAt() {
         return this.createdAt;
     }
@@ -89,4 +97,5 @@ public class Inventory {
     public void setLastUpdated(LocalDateTime lastUpdated) {
         this.lastUpdated = lastUpdated;
     }
+
 }
