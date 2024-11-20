@@ -36,6 +36,17 @@ public class RolesService {
 
     }
 
+    public Roles updateRolesById(RolesDTO request, Integer id){
+        Roles roles = rolesRp.findById(id).get();
+        
+        roles.setRoleName(request.getRoleName());
+        roles.setDescription(request.getDescription());
+        
+        rolesRp.save(roles);
+        return roles;
+
+    }
+
 
 
     public Roles deleteRolesById(Integer id){

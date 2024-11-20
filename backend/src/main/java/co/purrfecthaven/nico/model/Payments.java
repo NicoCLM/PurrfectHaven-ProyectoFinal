@@ -29,11 +29,9 @@ public class Payments {
     @NotNull
     private BigDecimal amount;
 
-    @ManyToOne
-    @JoinColumn(name = "method_id", nullable = false)
-    private PaymentMethods paymentMethods;
+    @NotNull
+    private String paymentMethods;
     
-
     @NotNull
     private LocalDateTime paymentDate;
     
@@ -42,11 +40,11 @@ public class Payments {
 
     //Getters & Setters
     
-    public PaymentMethods getPaymentMethods() {
+    public String getPaymentMethods() {
         return this.paymentMethods;
     }
 
-    public void setPaymentMethods(PaymentMethods paymentMethods) {
+    public void setPaymentMethods(String paymentMethods) {
         this.paymentMethods = paymentMethods;
     }
 

@@ -55,7 +55,7 @@ public class ProductService {
         return product;
     }
 
-        public Product deleteProductById(Integer id){
+    public Product deleteProductById(Integer id){
         Product product = productRp.findById(id).get();
 
         product.setIsDeleted(true);

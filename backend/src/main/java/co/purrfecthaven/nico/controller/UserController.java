@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import co.purrfecthaven.nico.service.UserService;
-import jakarta.validation.Valid;
 import co.purrfecthaven.nico.dto.UserDTO;
 import co.purrfecthaven.nico.exception.UserNotFoundException;
 import co.purrfecthaven.nico.model.User;
@@ -27,18 +26,23 @@ import org.springframework.web.bind.annotation.PutMapping;
 @RestController
 @RequestMapping("/user")
 public class UserController {
-
+    
+    @Autowired
     private UserService userService;
 
-    @Autowired
     public UserController(UserService userService){
         this.userService = userService;
     }
 
     @GetMapping
     public ResponseEntity<ArrayList<User>> listUsers(){
-        ArrayList<User> getUsers = this.userService.getAll();
-        return ResponseEntity.ok(getUsers);
+        try {
+          ArrayList<User> getUsers = this.userService.getAll();
+          return ResponseEntity.ok(getUsers);
+        }
+        catch (Exception e) {
+          return ResponseEntity.status(500).body(null);
+        }
     }
 
     @PostMapping("/register")

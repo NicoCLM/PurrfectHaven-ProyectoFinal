@@ -43,8 +43,20 @@ public class OrderDetailsService {
         return orderDetails;
     }
 
-    public Optional<OrderDetails> getOrderDetailsById(Integer id){
-        return orderDetailsRp.findById(id);
+    public OrderDetails updateOrderDetailsById(OrderDetailsDTO request, Integer id){
+        OrderDetails orderDetails = orderDetailsRp.findById(id).get();
+        Orders orders = ordersRp.findById(request.getOrderId()).orElseThrow(() -> new IllegalArgumentException("Order no encontrado " + request.getOrderId()));
+        
+        orderDetails.setOrders(orders);
+        orderDetails.setPrice(request.getPrice());
+        orderDetails.setQuantity(request.getQuantity());
+
+        orderDetailsRp.save(orderDetails);
+        return orderDetails;
     }
+
+
+
+
    
 }

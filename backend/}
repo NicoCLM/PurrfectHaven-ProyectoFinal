@@ -31,12 +31,8 @@ public class PaymentsController {
 
     @GetMapping
     public ResponseEntity<ArrayList<Payments>> getPayments() {
-        try {
-            ArrayList<Payments> listPayments = this.paymentsService.getPayments();
-            return ResponseEntity.ok(listPayments);
-        } catch (Exception e) {
-            return ResponseEntity.status(500).body(null);
-        }
+        ArrayList<Payments> listPayments = this.paymentsService.getPayments();
+        return ResponseEntity.ok(listPayments);
     }
 
 

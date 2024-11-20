@@ -42,7 +42,7 @@ public class OrdersService {
         return orders;
     }
 
-    public Orders updateOrder (Orders request, Integer id){
+    public Orders updateOrder (OrdersDTO request, Integer id){
         Orders orders = ordersRp.findById(id).get();
         
         orders.setStatus(request.getStatus());
