@@ -61,7 +61,7 @@ public class UserService {
             return user;
 
         } catch (Exception e) {
-            logger.info("Error");
+            logger.info("Error", e);
             return user;
         }
     }
@@ -112,6 +112,18 @@ public class UserService {
         }
         return matches;
     }
+
+    public User getUserByUsername(String username) {
+        Optional<User> user = userRp.findByUsername(username);
+
+        if (user.isPresent()) {
+            return user.get(); 
+        } else {
+
+            throw new UserNotFoundException("Usuario no encontrado");
+        }
+    }
+
 }
 
 

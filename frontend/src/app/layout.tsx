@@ -29,7 +29,6 @@ export default function RootLayout({
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <body className={`${geistSans.variable} ${geistMono.variable}`}>
     <main>
-     {/* Renderiza el Navbar solo si no estamos en la página de login */}
      {!hiddenPaths.includes(pathname) && <Navbar />}
      {children}
      <Footer/>

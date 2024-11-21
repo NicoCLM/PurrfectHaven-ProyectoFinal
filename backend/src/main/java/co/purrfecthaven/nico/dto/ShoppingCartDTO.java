@@ -2,6 +2,7 @@ package co.purrfecthaven.nico.dto;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 /**
  * ShoppingCartDTO
@@ -9,12 +10,15 @@ import java.time.LocalDateTime;
 public class ShoppingCartDTO {
     private int cartId;
     private int productId;
+    private List<ProductDTO> products;
     private int userId;
     private int amount;
     private LocalDateTime dateAdded;
     private String status;
 
     //Getters & Setters
+
+    
     
     public int getCartId() {
         return this.cartId;
@@ -62,5 +66,13 @@ public class ShoppingCartDTO {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public List<ProductDTO> getProducts() {
+        return products;
+    }
+
+    public void setProducts(List<ProductDTO> products) {
+        this.products = products;
     }
 }

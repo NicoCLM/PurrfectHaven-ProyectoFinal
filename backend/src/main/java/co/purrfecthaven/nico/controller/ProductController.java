@@ -49,7 +49,7 @@ public class ProductController {
            Product createdProduct = this.productService.createProduct(productDTO); 
            return ResponseEntity.status(HttpStatus.CREATED).body(createdProduct);
         } catch (Exception e) {
-           return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Acceso no autorizado");
+           return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Acceso no autorizado: " + e);
         }
 
     }

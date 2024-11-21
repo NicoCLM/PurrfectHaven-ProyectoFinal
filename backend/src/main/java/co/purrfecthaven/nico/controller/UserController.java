@@ -2,7 +2,11 @@ package co.purrfecthaven.nico.controller;
 
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
+import org.slf4j.Logger; 
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,7 +30,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 @RestController
 @RequestMapping("/api/user")
 public class UserController {
-    
+    private static final Logger logger = LoggerFactory.getLogger(UserController.class);
     @Autowired
     private UserService userService;
 
@@ -45,6 +49,7 @@ public class UserController {
         }
     }
 
+    
     @PostMapping("/register")
     public ResponseEntity<?> saveUser(@RequestBody UserDTO userDTO){
         try {
@@ -59,12 +64,27 @@ public class UserController {
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody UserDTO userDTO) {
         boolean isAuthenticated = this.userService.authenticate(userDTO.getUsername(), userDTO.getHashedPassword());
+    
+        Map<String, Object> response = new HashMap<>();
         if (isAuthenticated) {
-            return ResponseEntity.status(HttpStatus.OK).body("Login exitoso");
+            User user = this.userService.getUserByUsername(userDTO.getUsername());
+            
+            if (user == null) {
+                response.put("message", "Usuario no encontrado");
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
+            }
+            
+            logger.info("User ID after authentication: " + user.getUserId()); 
+    
+            response.put("userId", user.getUserId()); 
+            response.put("message", "Login exitoso");
+            return ResponseEntity.status(HttpStatus.OK).body(response);
         } else {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Credenciales incorrectas");
+            response.put("message", "Credenciales incorrectas");
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(response);
         }
     }
+    
 
     @PutMapping("/update/{id}")
     public ResponseEntity<?> updateUserById(@RequestBody UserDTO request, @PathVariable("id") Integer id){

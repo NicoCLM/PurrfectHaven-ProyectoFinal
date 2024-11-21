@@ -56,6 +56,9 @@ public class ShoppingCartService {
         shoppingCartRp.save(shoppingCart);
         return shoppingCart;
     }
-    
+
+    public Optional<ShoppingCart> getCartByUserId(Integer userId) {
+        return shoppingCartRp.findByUser_UserId(userId);
+    }
 
 }

@@ -42,6 +42,20 @@ public class ShoppingCartController {
         }
     }
 
+    @GetMapping("/user/{userId}")
+    public ResponseEntity<?> getCartByUserId(@PathVariable("user_id") Integer userId) {
+        try {
+            Optional<ShoppingCart> shoppingCartOptional = shoppingCartService.getCartByUserId(userId);
+            if (shoppingCartOptional.isPresent()) {
+                return ResponseEntity.ok(shoppingCartOptional.get());
+            } else {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Carrito no encontrado para el usuario.");
+            }
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error al obtener el carrito");
+        }
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<?> getShoppingCartById( @PathVariable("id") Integer id){
         try {

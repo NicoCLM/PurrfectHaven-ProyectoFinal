@@ -1,0 +1,114 @@
+.adminSection {
+    padding: 40px;
+    background-color: #f8f8f8;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .adminSection h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 40px;
+  }
+  
+  .productSection h3, .userSection h3, .roleSection h3 {
+    font-size: 1.8rem;
+    font-weight: 500;
+    color: #555;
+    margin-bottom: 15px;
+  }
+  
+  .productSection, .userSection, .roleSection {
+    margin-bottom: 40px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .inputField {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+  }
+  
+  .inputField:focus {
+    outline: none;
+    border-color: #AB263A;
+  }
+  
+  .btn {
+    background-color: #AB263A;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    margin-top: 10px;
+  }
+  
+  .btn:hover {
+    background-color: #9b1e2d;
+  }
+  
+  .btn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  .section {
+    margin: 20px;
+  }
+  
+  .form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .formField {
+    margin-bottom: 20px;
+  }
+  
+  .productList, .userList, .roleList {
+    margin-top: 30px;
+  }
+  
+  .productItem, .userItem, .roleItem {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  }
+  
+  .productItem button, .userItem button, .roleItem button {
+    background-color: #333;
+    color: #fff;
+    padding: 8px 15px;
+    border: none;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .productItem button:hover, .userItem button:hover, .roleItem button:hover {
+    background-color: #9b1e2d;
+  }
+  
+  .productList, .userList, .roleList {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  

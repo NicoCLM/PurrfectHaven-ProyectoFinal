@@ -1,44 +1,47 @@
+'use client';
+
 import styles from '@/styles/CartTable.module.css';
 
-const CartTable: React.FC = () => {
+interface CartItem {
+    productId: number;
+    name: string;
+    price: number;
+    amount: number;
+}
+
+interface CartTableProps {
+    cart: CartItem[];
+}
+
+export default function CartTable({ cart }: CartTableProps) {
     return (
-        <>
-            <div className={styles.tableDiv}>
-                <table>
-                    <thead>
+        <div>
+            <h2>Carrito de compras</h2>
+            <table className={styles.table}>
+                <thead>
+                    <tr>
+                        <th>Producto</th>
+                        <th>Cantidad</th>
+                        <th>Precio</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {cart.length > 0 ? (
+                        cart.map((item) => (
+                            <tr key={item.productId}>
+                                <td>{item.name}</td>
+                                <td>{item.amount}</td>
+                                <td>${item.price}</td>
+                            </tr>
+                        ))
+                    ) : (
                         <tr>
-                            <th>Producto</th>
-                            <th>Cantidad</th>
-                            <th>Precio</th>
+                            <td colSpan={3}>No hay productos en el carrito</td>
                         </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>xxx</td>
-                            <td>1</td>
-                            <td>$10.00</td>
-                        </tr>
-                        <tr>
-                            <td>yyy</td>
-                            <td>2</td>
-                            <td>$20.00</td>
-                        </tr>
-                        <tr>
-                            <td>zzz</td>
-                            <td>3</td>
-                            <td>$30.00</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <div>
-                <button>Proceder al pago</button>
-            </div>
-        </>
+                    )}
+                </tbody>
+            </table>
+        </div>
     );
+}
 
-};
-
-
-export default CartTable; 

@@ -34,7 +34,7 @@ public class RolesController {
     }
 
     @GetMapping
-    public ResponseEntity<ArrayList<Roles>> listRoless(){
+    public ResponseEntity<ArrayList<Roles>> listRoles(){
         try {
             ArrayList<Roles> getRoles = this.rolesService.getRoles();
             return ResponseEntity.ok(getRoles);

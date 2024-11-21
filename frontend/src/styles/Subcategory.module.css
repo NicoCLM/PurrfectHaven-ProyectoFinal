@@ -1,0 +1,70 @@
+:root {
+    --primary-color: #007bff;
+    --primary-color-dark: #0069d9;
+    --secondary-color: #6c757d;
+    --background-color: #f8f9fa;
+    --background-color-dark: #e9ecef;
+    --border-radius: 0.5rem;
+    --box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+
+.pageContainer {
+    display: flex;
+    justify-content: space-between; 
+    padding: 2rem;
+    gap: 2rem;
+}
+
+.productsContainer {
+    flex: 1; 
+}
+
+
+.cartContainer {
+    width: 300px; 
+    max-height: 90vh; 
+    background-color: var(--background-color);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    box-shadow: var(--box-shadow);
+    position: sticky;
+    top: 2rem;
+    overflow-y: auto; 
+}
+
+
+.cartContainer h2 {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+
+.cartContainer table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.cartContainer th, .cartContainer td {
+    padding: 0.5rem;
+    text-align: left;
+    border-bottom: 1px solid var(--secondary-color);
+}
+
+.cartContainer th {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.cartContainer td {
+    background-color: var(--background-color-dark);
+}
+
+.cartContainer .total {
+    margin-top: 1rem;
+    font-weight: bold;
+    text-align: right;
+    font-size: 1.125rem;
+    color: var(--primary-color);
+}
