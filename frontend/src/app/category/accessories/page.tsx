@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Accessories from '@/components/Accessories/Accessories';
 import CartTable from '@/components/CartTable/CartTable';
 import styles from '@/styles/Subcategory.module.css';
+import { useRouter } from 'next/navigation'
 
 interface Product {
     productId: number;
@@ -19,8 +20,13 @@ interface CartItem {
 }
 
 export default function AccessoriesPage() {
+    const router = useRouter();
     const [cart, setCart] = useState<CartItem[]>([]);
-
+    
+    const handleCheckout = () => {
+        console.log("Redirigiendo al método de pago...");
+        router.push('/checkout'); 
+    };
     const addToCart = (product: Product) => {
         const existingProductIndex = cart.findIndex(item => item.productId === product.productId);
         
@@ -36,15 +42,25 @@ export default function AccessoriesPage() {
 
     return (
         <div className={styles.pageContainer}>
-            <div className={styles.productsContainer}>
-                <h1>Carrito y Productos</h1>
-                <Accessories addToCart={addToCart} />
-            </div>
-            <div className={styles.cartContainer}>
-                <h2>Carrito</h2>
-                <CartTable cart={cart} />
-            </div>
+        <div className={styles.productsContainer}>
+            <h1>Accesorios</h1>
+            <Accessories addToCart={addToCart} />
         </div>
+        <div className={styles.cartContainer}>
+            <h2>Carrito</h2>
+            <CartTable cart={cart} setCart={setCart} />
+            {cart.length > 0 ? (
+                <button 
+                    className={styles.checkoutButton} 
+                    onClick={handleCheckout}
+                >
+                    Ir al método de pago
+                </button>
+            ) : (
+                <p>El carrito está vacío.</p>
+            )}
+        </div>
+    </div>
     );
 }
 

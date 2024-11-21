@@ -1,9 +1,10 @@
 'use client';
 
 import { useState } from 'react';
-import Accessories from '@/components/Accessories/Accessories';
+import HealthHygienePage from '@/components/HealthHygiene/HealthHygiene';
 import CartTable from '@/components/CartTable/CartTable';
 import styles from '@/styles/Subcategory.module.css';
+import { useRouter } from 'next/navigation';
 
 interface Product {
     productId: number;
@@ -18,8 +19,15 @@ interface CartItem {
     amount: number;
 }
 
-export default function HealthHygienePage() {
+export default function HealthHygiene() {
     const [cart, setCart] = useState<CartItem[]>([]);
+    const router = useRouter();
+
+    const handleCheckout = () => {
+        console.log("Redirigiendo al método de pago...");
+        router.push('/checkout'); 
+    };
+    
 
     const addToCart = (product: Product) => {
         const existingProductIndex = cart.findIndex(item => item.productId === product.productId);
@@ -36,12 +44,22 @@ export default function HealthHygienePage() {
     return (
         <div className={styles.pageContainer}>
             <div className={styles.productsContainer}>
-                <h1>Carrito y Productos</h1>
-                <Accessories addToCart={addToCart} />
+                <h1>Salud e Higiene</h1>
+                <HealthHygienePage addToCart={addToCart} />
             </div>
             <div className={styles.cartContainer}>
                 <h2>Carrito</h2>
-                <CartTable cart={cart} />
+                <CartTable cart={cart} setCart={setCart} />
+                {cart.length > 0 ? (
+                    <button
+                        className={styles.checkoutButton}
+                        onClick={handleCheckout}
+                    >
+                        Ir al método de pago
+                    </button>
+                ) : (
+                    <p>El carrito está vacío.</p>
+                )}
             </div>
         </div>
     );

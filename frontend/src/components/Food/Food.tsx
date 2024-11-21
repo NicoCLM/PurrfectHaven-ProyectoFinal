@@ -10,17 +10,18 @@ interface Product {
 }
 
 interface FoodProps {
-    addToCart: (product: Product) => void; // Función para agregar productos al carrito
+    addToCart: (product: Product) => void; 
 }
 
-export default function Food({ addToCart }: FoodProps) {
+export default function FoodPage({ addToCart }: FoodProps) {
     const [products, setProducts] = useState<Product[]>([]);
     const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const response = await fetch("http://localhost:8080/api/product");
+                const categoryId = 1;
+                const response = await fetch(`http://localhost:8080/api/product?categoryId=${categoryId}`);
                 if (!response.ok) {
                     throw new Error(`Error: ${response.status}`);
                 }
@@ -44,19 +45,22 @@ export default function Food({ addToCart }: FoodProps) {
 
     return (
         <div className={styles.container}>
-            <h1>Sección Alimentos</h1>
-            <ul>
+            <h1 className={styles.containerTitle}>Sección accesorios</h1>
+            <ul className={styles.productList}>
                 {products.length > 0 ? (
                     products.map((product) => (
-                        <li key={product.productId}>
-                            {product.name} - ${product.price}
-                            <span className={styles.productName}>{product.name}</span>
-                            <span className={styles.price}>{product.price}</span>
-                            <button onClick={() => addToCart(product)}>Agregar al carrito</button>
+                        <li key={product.productId} className={styles.productItem}>
+                            <div className={styles.productContent}>
+                                <span className={styles.productName}>{product.name}</span>
+                                <span className={styles.productPrice}>${product.price}</span>
+                            </div>
+                            <button onClick={() => addToCart(product)} className={styles.addButton}>
+                                Agregar al carrito
+                            </button>
                         </li>
                     ))
                 ) : (
-                    <li>Cargando productos...</li>
+                    <li className={styles.loading}>Cargando productos...</li>
                 )}
             </ul>
         </div>

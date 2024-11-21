@@ -10,7 +10,7 @@ interface Product {
 }
 
 interface AccessoriesProps {
-    addToCart: (product: Product) => void; // Función para agregar productos al carrito
+    addToCart: (product: Product) => void;
 }
 
 export default function Accessories({ addToCart }: AccessoriesProps) {
@@ -20,7 +20,8 @@ export default function Accessories({ addToCart }: AccessoriesProps) {
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const response = await fetch("http://localhost:8080/api/product");
+                const categoryId = 3;
+                const response = await fetch(`http://localhost:8080/api/product?categoryId=${categoryId}`);
                 if (!response.ok) {
                     throw new Error(`Error: ${response.status}`);
                 }

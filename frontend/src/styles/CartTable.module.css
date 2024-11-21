@@ -1,18 +1,70 @@
-.table {
-    border-collapse: collapse;
+
+.cartTable {
     width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
 }
 
-.table td, .table th {
-    border: 1px solid #ddd;
-    padding: 8px;
-}
-
-.table tr:nth-child(even){background-color: #f2f2f2;}
-.table th {
-    padding-top: 12px;
-    padding-bottom: 12px;
+.cartTable th, .cartTable td {
+    padding: 0.75rem;
     text-align: left;
-    background-color: #4CAF50;
+    border-bottom: 1px solid var(--secondary-color);
+}
+
+.cartTable th {
+    background-color: var(--primary-color);
     color: white;
+}
+
+.cartTable td {
+    background-color: var(--background-color-dark);
+}
+
+
+.quantityButton {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 0.5rem;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 1.1rem;
+    margin: 0 0.25rem;
+}
+
+.quantityButton:hover {
+    background-color: var(--primary-color-dark);
+}
+
+.quantityButton:disabled {
+    background-color: var(--secondary-color);
+    cursor: not-allowed;
+}
+
+.removeButton {
+    background-color: #dc3545; 
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 1rem;
+}
+
+.removeButton:hover {
+    background-color: #c82333;
+}
+
+.removeButton:focus {
+    outline: none;
+}
+
+
+.cartTable td[colspan="4"] {
+    text-align: center;
+    font-size: 1.2rem;
+    color: var(--secondary-color);
+    padding: 2rem 0;
 }
