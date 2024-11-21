@@ -55,5 +55,8 @@ public class UserRolesService {
         userRolesRp.save(userRoles);
         return userRoles;
     }
-
+    
+    public ArrayList<UserRoles> findUserRole (Integer id){
+         return userRolesRp.findByUser_UserId(id);
+    }
 }

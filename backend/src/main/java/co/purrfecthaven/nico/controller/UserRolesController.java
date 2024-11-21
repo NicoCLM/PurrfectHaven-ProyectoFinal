@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import co.purrfecthaven.nico.dto.UserRolesDTO;
+import co.purrfecthaven.nico.model.Roles;
 import co.purrfecthaven.nico.model.UserRoles;
 import co.purrfecthaven.nico.service.UserRolesService;
 
@@ -42,6 +43,24 @@ public class UserRolesController {
             return ResponseEntity.status(500).body(null);
         }
     
+    }
+
+    @GetMapping("/roles/{userId}")
+    public ResponseEntity<?> getUserRole(@PathVariable("userId") Integer userId) {
+        try {
+            ArrayList<UserRoles> userRoles = userRolesService.findUserRole(userId);
+            if (userRoles.isEmpty()) {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Rol no encontrado");
+            }
+            Roles role = userRoles.get(0).getRoles(); 
+            if (role != null) {
+                return ResponseEntity.ok(role.getRoleName());
+            } else {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Rol no encontrado");
+            }
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error al obtener el rol");
+        }
     }
 
     @PostMapping("/register")
