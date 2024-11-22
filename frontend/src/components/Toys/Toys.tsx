@@ -52,6 +52,7 @@ export default function ToysPage({ addToCart }: ToysProps) {
                     products.map((product) => (
                         <li key={product.productId} className={styles.productItem}>
                             <div className={styles.productContent}>
+                                <span className={styles.productName}>{product.productId}</span>
                                 <span className={styles.productName}>{product.name}</span>
                                 <span className={styles.productPrice}>${product.price}</span>
                             </div>

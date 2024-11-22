@@ -10,7 +10,7 @@ interface Product {
 }
 
 interface healthHygieneProps {
-    addToCart: (product: Product) => void; 
+    addToCart: (product: Product) => void;
 }
 
 export default function HealthHygienePage({ addToCart }: healthHygieneProps) {
@@ -51,6 +51,7 @@ export default function HealthHygienePage({ addToCart }: healthHygieneProps) {
                     products.map((product) => (
                         <li key={product.productId} className={styles.productItem}>
                             <div className={styles.productContent}>
+                                <span className={styles.productName}>{product.productId}</span>
                                 <span className={styles.productName}>{product.name}</span>
                                 <span className={styles.productPrice}>${product.price}</span>
                             </div>

@@ -22,7 +22,7 @@ const CartTable: FC<CartTableProps> = ({ cart, setCart }) => {
                 return { ...item, amount: item.amount - 1 };
             }
             return item;
-        }).filter(item => item.amount > 0); 
+        }).filter(item => item.amount > 0);
         setCart(updatedCart);
     };
 
@@ -61,8 +61,8 @@ const CartTable: FC<CartTableProps> = ({ cart, setCart }) => {
                                         if (item.amount === 1) {
                                             removeItem(item.productId);
                                         } else {
-                                            setCart(prevCart => 
-                                                prevCart.map(cartItem => 
+                                            setCart(prevCart =>
+                                                prevCart.map(cartItem =>
                                                     cartItem.productId === item.productId
                                                         ? { ...cartItem, amount: cartItem.amount + 1 }
                                                         : cartItem
