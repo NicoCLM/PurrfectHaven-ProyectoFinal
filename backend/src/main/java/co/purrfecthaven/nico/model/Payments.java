@@ -22,10 +22,6 @@ public class Payments {
     @NotNull
     private int paymentId;
 
-    @ManyToOne
-    @JoinColumn(name = "order_id", nullable = false)
-    private Orders orders;
-
     @NotNull
     private BigDecimal amount;
 
@@ -63,14 +59,6 @@ public class Payments {
 
     public void setPaymentId(int paymentId) {
         this.paymentId = paymentId;
-    }
-
-    public Orders getOrders() {
-        return this.orders;
-    }
-
-    public void setOrders(Orders orders) {
-        this.orders = orders;
     }
 
     public BigDecimal getAmount() {

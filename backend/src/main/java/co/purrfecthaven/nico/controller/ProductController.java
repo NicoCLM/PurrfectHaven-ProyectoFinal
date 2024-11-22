@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import co.purrfecthaven.nico.dto.ProductDTO;
@@ -32,7 +33,7 @@ public class ProductController {
         this.productService = productService;
     }
 
-    @GetMapping
+    @GetMapping("/allproducts")
     public ResponseEntity<ArrayList<Product>> listProducts(){
         try {
             ArrayList<Product> getProducts = this.productService.getAll();
@@ -41,6 +42,23 @@ public class ProductController {
             return ResponseEntity.status(500).body(null);
         }
 
+    }
+
+    @GetMapping("/products")
+    public ResponseEntity<ArrayList<Product>> getActiveProducts(){
+        try {
+            ArrayList<Product> getProducts = this.productService.getActiveProducts();
+            return ResponseEntity.ok(getProducts);
+        } catch (Exception e) {
+            return ResponseEntity.status(500).body(null);
+        }
+
+    }
+
+    @GetMapping
+    public ResponseEntity<ArrayList<Product>> getProducts(@RequestParam(required = false) Integer categoryId) {
+        ArrayList<Product> products = productService.getProductsByCategory(categoryId);
+        return ResponseEntity.ok(products);
     }
 
     @PostMapping

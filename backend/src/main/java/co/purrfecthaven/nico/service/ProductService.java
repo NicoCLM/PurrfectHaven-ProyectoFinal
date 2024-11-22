@@ -50,13 +50,22 @@ public class ProductService {
         return product;
     }
 
+    public ArrayList<Product> getActiveProducts() {
+        return productRp.findByIsDeletedFalse();
+    }
+
     public Product updateProductById (ProductDTO request, Integer id){
         Product product = productRp.findById(id).get();
+        Category category = categoryRp.findById(request.getCategoryId()).orElseThrow(()-> new IllegalArgumentException("Categoria no encontrada" + request.getCategoryId()));
+        logger.info("category: " + category);
 
         product.setName(request.getName());
         product.setDescription(request.getDescription());
+        product.setPrice(request.getPrice());
         product.setStock(request.getStock());
         product.setImageUrl(request.getImageUrl());
+        product.setCategory(category);
+    
 
         productRp.save(product);
         return product;
@@ -71,6 +80,10 @@ public class ProductService {
         productRp.save(product);
 
         return product;
+    }
+
+    public ArrayList<Product> getProductsByCategory(Integer categoryId) {
+        return productRp.findByCategoryAndIsDeleted(categoryId);
     }
 
    

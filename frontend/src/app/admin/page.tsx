@@ -91,6 +91,10 @@ export default function Admin() {
         try {
             const response = await fetch(`http://localhost:8080/api/product/update/${productData.product_id}`, {
                 method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(productData),
             });
 
             if (!response.ok) {
@@ -195,6 +199,13 @@ export default function Admin() {
 
             <div className={styles.productSection}>
                 <h3>Actualizar Producto</h3>
+                <div className={styles.productSection}>
+                    <input
+                        type="number"
+                        placeholder="ID del producto"
+                        onChange={(e) => setProductData({ ...productData, product_id: Number(e.target.value) })}
+                    />
+                </div>
 
                 <div className={styles.formField}>
                     <label htmlFor="productName">Nombre del producto</label>
@@ -262,7 +273,7 @@ export default function Admin() {
                     />
                 </div>
 
-                <button onClick={handleCreateProduct} className={styles.btn}>Crear Producto</button>
+                <button onClick={handleUpdateProduct} className={styles.btn}>Actualizar Producto</button>
             </div>
         </section>
     );
